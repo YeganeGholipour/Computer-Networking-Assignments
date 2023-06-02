@@ -1,0 +1,12 @@
+# udp-pinger-server
+
+from socket import *
+
+serverport = 12000
+serverSocket = socket(AF_INET, SOCK_DGRAM)
+serverSocket.bind(("", serverport))
+print("The server is ready to recieve your request...")
+while True:
+    message, clientAddress = serverSocket.recv(2048)
+    response = "This is a PNG message"
+    serverSocket.sendto(response.encode(), clientAddress)
